@@ -10,12 +10,17 @@ export class AvtharComponent {
   set avtharName(value: string) {
     const str = value;
     const matches = str.match(/\b(\w)/g);
-    const acronym = matches.join("")
+    let acronym = matches.join("")
+    // set max length to 3
+    if(acronym.length > 2) {
+    acronym = acronym.substr(0, 3);
+    }
     this._avtharName = acronym;
   }
   @Input("name") get avtharName() {
     return this._avtharName;
   }
   @Input() size;
+  //random color for avthar
   randomBgColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
 }
